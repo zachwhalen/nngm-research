@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<title>A Chart of some Stylometric Calculations on NNGM books</title>
+</head>
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'A PCA scatter plot of stylometric data on NNGM books'
+    },
+    subtitle: {
+        text: 'Run "{{{kw}}}", based on top {{{size}}} keywords'
+    },
+    xAxis: {
+        title: {
+            enabled: true,
+            text: 'PCA1'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
+    },
+    yAxis: {
+        title: {
+            text: 'PCA2'
+        }
+    },
+    // legend: {
+    //     layout: 'vertical',
+    //     align: 'left',
+    //     verticalAlign: 'top',
+    //     x: 100,
+    //     y: 70,
+    //     floating: true,
+    //     backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+    //     borderWidth: 1
+    // },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(100,100,100)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
+            tooltip: {
+                
+                pointFormat: '<b>{point.name}</b><br/>{point.x}, {point.y}'
+            }
+        }
+    },
+    series: [{
+        name: 'Books',
+        color: 'rgba(223, 83, 83, .5)',
+        data: [ {{{data}}} ]
+
+    }]
+});
+	</script>
+</body>
+</html>
